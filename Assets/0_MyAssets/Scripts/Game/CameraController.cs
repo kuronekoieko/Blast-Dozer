@@ -10,13 +10,17 @@ using DG.Tweening;
 public class CameraController : MonoBehaviour
 {
     public static CameraController i;
+    PlayerController playerController;
+    Vector3 vecFromPlayer;
     void Start()
     {
         if (i == null) i = this;
+        playerController = FindObjectOfType<PlayerController>();
+        vecFromPlayer = transform.position - playerController.transform.position;
     }
 
     void Update()
     {
-
+        transform.position = playerController.transform.position + vecFromPlayer;
     }
 }

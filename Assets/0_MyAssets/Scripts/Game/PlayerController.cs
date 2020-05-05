@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Vector3 mouseDownPos;
+    Rigidbody rb;
+    float speed = 50;
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
 
 
@@ -23,12 +25,15 @@ public class PlayerController : MonoBehaviour
             mouseDownPos = Input.mousePosition;
         }
 
+        Vector3 direction = Vector3.zero;
         if (Input.GetMouseButton(0))
         {
-            Vector3 direction = Input.mousePosition - mouseDownPos;
+            direction = Input.mousePosition - mouseDownPos;
             direction.z = direction.y;
             direction.y = 0;
             transform.rotation = Quaternion.LookRotation(direction);
+
         }
+        rb.velocity = direction.normalized * speed;
     }
 }
