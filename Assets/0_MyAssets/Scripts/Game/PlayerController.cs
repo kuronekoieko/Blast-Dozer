@@ -37,4 +37,11 @@ public class PlayerController : MonoBehaviour
         }
         rb.velocity = direction.normalized * speed;
     }
+
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
+        if (obstacle == null) { return; }
+        obstacle.Broken();
+    }
 }
