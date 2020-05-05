@@ -15150,20 +15150,20 @@ Transform:
   - {fileID: 77037241}
   - {fileID: 1844824314}
   - {fileID: 584918245}
-  - {fileID: 1903541649}
   - {fileID: 968499970}
   - {fileID: 932799726}
-  - {fileID: 1349095249}
   - {fileID: 1409172255}
   - {fileID: 796882464}
   - {fileID: 1809518755}
-  - {fileID: 766501907}
-  - {fileID: 987559607}
-  - {fileID: 2028016362}
-  - {fileID: 383614192}
   - {fileID: 778578938}
+  - {fileID: 766501907}
+  - {fileID: 1903541649}
+  - {fileID: 987559607}
+  - {fileID: 383614192}
+  - {fileID: 2028016362}
   - {fileID: 63342057}
   - {fileID: 1705439629}
+  - {fileID: 1349095249}
   - {fileID: 1161863599}
   - {fileID: 418336108}
   m_Father: {fileID: 1534430134}
@@ -47911,6 +47911,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 938504462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &939657047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939657049}
+  - component: {fileID: 939657048}
+  m_Layer: 0
+  m_Name: ExplosionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &939657048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939657047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c1da4bf5b1746beaf21f478308e076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 19821056, guid: 079954accd64b32419ec069129c81273, type: 3}
+--- !u!4 &939657049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939657047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940167834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 798d0ce4417055244b0da7dbdd7cb46a,
@@ -71122,6 +71166,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 39a7b3ccc7721094487979209563db78, type: 3}
+--- !u!1 &1443931439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443931441}
+  - component: {fileID: 1443931440}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1443931440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443931439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ae2b93a60b664aaa8d96a15a14e71c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionManager: {fileID: 939657048}
+--- !u!4 &1443931441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443931439}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1444719577
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,11 +8,12 @@ using System.Linq;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    GameObject[] stages;
+    [SerializeField] ExplosionManager _explosionManager;
+    public ExplosionManager explosionManager { get { return _explosionManager; } }
+    public static GameManager i;
+
     void Start()
     {
-        stages = Resources.LoadAll("Stages", typeof(GameObject)).Cast<GameObject>().ToArray();
-        Variables.lastStageIndex = stages.Length - 1;
-        Instantiate(stages[Variables.currentStageIndex], Vector3.zero, Quaternion.identity);
+        if (i == null) i = this;
     }
 }
