@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] ExplosionManager _explosionManager;
     public ExplosionManager explosionManager { get { return _explosionManager; } }
+    [SerializeField] CameraController _cameraController;
+    public CameraController cameraController { get { return _cameraController; } }
     public static GameManager i;
+
 
     void Start()
     {

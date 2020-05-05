@@ -43,5 +43,6 @@ public class PlayerController : MonoBehaviour
         var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
         obstacle.Broken();
+        GameManager.i.cameraController.Shake();
     }
 }

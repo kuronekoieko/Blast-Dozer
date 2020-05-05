@@ -9,9 +9,11 @@ using DG.Tweening;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] CameraShakeController cameraShakeController;
     public static CameraController i;
     PlayerController playerController;
     Vector3 vecFromPlayer;
+
     void Start()
     {
         if (i == null) i = this;
@@ -22,5 +24,10 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         transform.position = playerController.transform.position + vecFromPlayer;
+    }
+
+    public void Shake()
+    {
+        cameraShakeController.Shake();
     }
 }
