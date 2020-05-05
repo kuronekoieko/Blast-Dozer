@@ -56,20 +56,15 @@ public class PlayerController : MonoBehaviour
         var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
 
-        if (obstacle.Broken(atk, out int point))
-        {
-            GameManager.i.cameraController.Shake();
-            Variables.status.point += point;
-            Debug.Log(Variables.status.point);
-            if (Variables.status.point > 10)
-            {
-                transform.localScale = Vector3.one * 2;
-            }
-        }
-        else
-        {
-            isBound = true;
-        }
+        isBound = !obstacle.Broken(atk, out int point);
+        if (isBound) { return; }
 
+        GameManager.i.cameraController.Shake();
+        Variables.status.point += point;
+        Debug.Log(Variables.status.point);
+        if (Variables.status.point > 10)
+        {
+            transform.localScale = Vector3.one * 2;
+        }
     }
 }
