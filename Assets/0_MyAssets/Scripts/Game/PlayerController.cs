@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] MeshRenderer meshRenderer;
@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     float speed = 30;
     float atk = 50;
+    bool isBound;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,7 +20,16 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Controller();
+        if (isBound)
+        {
+            rb.velocity = -transform.forward * speed;
+            DOVirtual.DelayedCall(0.1f, () => { isBound = false; });
+        }
+        else
+        {
+            Controller();
+        }
+
     }
 
     void Controller()
@@ -46,7 +56,14 @@ public class PlayerController : MonoBehaviour
         var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
 
-        if (!obstacle.Broken(atk)) { return; }
-        GameManager.i.cameraController.Shake();
+        if (obstacle.Broken(atk))
+        {
+            GameManager.i.cameraController.Shake();
+        }
+        else
+        {
+            isBound = true;
+        }
+
     }
 }
