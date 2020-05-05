@@ -224,8 +224,8 @@ ScriptedImporter:
     material: {fileID: 2100000, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
     generatedTextures:
     - {fileID: 2800000, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
-    - {fileID: 2800004, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
     - {fileID: 2800002, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
+    - {fileID: 2800004, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
   - graphLabel: Industrial_015_mat
     prototypeName: Industrial_015_mat
     graphDescIndex: 1
@@ -429,5 +429,5 @@ ScriptedImporter:
     material: {fileID: 2100002, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
     generatedTextures:
     - {fileID: 2800006, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
-    - {fileID: 2800010, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
     - {fileID: 2800008, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}
+    - {fileID: 2800010, guid: fe15f1411668bc444ac3843ce1790ff3, type: 3}

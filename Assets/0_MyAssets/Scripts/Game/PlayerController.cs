@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
             direction.z = direction.y;
             direction.y = 0;
             transform.rotation = Quaternion.LookRotation(direction);
-
         }
         rb.velocity = direction.normalized * speed;
     }
