@@ -18,4 +18,11 @@ public class Variables : MonoBehaviour
     }
     private static int _currentstageIndex;
     public static int lastStageIndex;
+    public static Status status = new Status();
+}
+
+public class Status
+{
+    public int point;
+    public int rank;
 }
