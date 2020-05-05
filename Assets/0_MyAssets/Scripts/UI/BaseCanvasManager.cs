@@ -74,14 +74,12 @@ public class BaseCanvasManager : MonoBehaviour
 
     protected void ToNextScene()
     {
-        if (!IsThisScreen()) { return; }
         Variables.currentStageIndex++;
         SceneManager.LoadScene("GameScene");
     }
 
     protected void ReLoadScene()
     {
-        if (!IsThisScreen()) { return; }
         SceneManager.LoadScene("GameScene");
     }
 
