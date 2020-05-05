@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] MeshRenderer meshRenderer;
     Vector3 mouseDownPos;
     Rigidbody rb;
     float speed = 30;
+    float atk = 50;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Vector3 size = meshRenderer.bounds.size;
+        atk = size.x * size.y * size.z;
     }
 
 
@@ -41,7 +45,8 @@ public class PlayerController : MonoBehaviour
     {
         var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
-        obstacle.Broken();
+
+        if (!obstacle.Broken(atk)) { return; }
         GameManager.i.cameraController.Shake();
     }
 }
