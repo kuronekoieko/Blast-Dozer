@@ -8,13 +8,19 @@ public class PlayerController : MonoBehaviour
     Vector3 mouseDownPos;
     Rigidbody rb;
     float speed = 30;
-    float atk = 50;
+    float atk
+    {
+        get
+        {
+            Vector3 size = meshRenderer.bounds.size;
+            return size.x * size.y * size.z;
+        }
+    }
     bool isBound;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Vector3 size = meshRenderer.bounds.size;
-        atk = size.x * size.y * size.z;
+
     }
 
 
@@ -56,12 +62,21 @@ public class PlayerController : MonoBehaviour
         var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
 
-        isBound = !obstacle.Broken(atk, out int point);
-        if (isBound) { return; }
+        if (obstacle.Broken(atk, out int point))
+        {
+            BreakObstacle(point);
+        }
+        else
+        {
+            isBound = true;
+        }
+    }
 
+    void BreakObstacle(int point)
+    {
         GameManager.i.cameraController.Shake();
         Variables.status.point += point;
-        Debug.Log(Variables.status.point);
+        // Debug.Log(Variables.status.point);
         if (Variables.status.point > 5)
         {
             transform.localScale = Vector3.one * 2;

@@ -9,7 +9,7 @@ using DG.Tweening;
 /// </summary>
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] CameraShakeController cameraShakeController;
+    public CameraShakeController cameraShakeController;
     PlayerController playerController;
     Vector3 vecFromPlayer;
     int maxSize;
