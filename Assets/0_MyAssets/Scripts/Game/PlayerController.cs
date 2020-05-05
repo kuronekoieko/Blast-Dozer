@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
     }
 
 
@@ -29,7 +28,7 @@ public class PlayerController : MonoBehaviour
         if (isBound)
         {
             rb.velocity = -transform.forward * speed;
-            DOVirtual.DelayedCall(0.1f, () => { isBound = false; });
+            DOVirtual.DelayedCall(0.5f, () => { isBound = false; });
         }
         else
         {

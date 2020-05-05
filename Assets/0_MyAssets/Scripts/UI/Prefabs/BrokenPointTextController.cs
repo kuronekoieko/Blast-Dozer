@@ -6,19 +6,23 @@ using UnityEngine.UI;
 public class BrokenPointTextController : MonoBehaviour
 {
     RectTransform rectTransform;
-    void Start()
+    Text text;
+    public void OnStart()
     {
-
+        rectTransform = GetComponent<RectTransform>();
+        text = GetComponent<Text>();
     }
 
     public void Show(Vector3 screenPos, int point)
     {
-        rectTransform = GetComponent<RectTransform>();
+        gameObject.SetActive(true);
         rectTransform.position = screenPos;
+        text.text = "+" + point;
 
-        GetComponent<Text>().text = "+" + point;
-
-        rectTransform.DOLocalMoveY(300, 1).SetRelative().OnComplete(() =>
+        rectTransform
+        .DOLocalMoveY(300, 1)
+        .SetRelative()
+        .OnComplete(() =>
         {
             gameObject.SetActive(false);
         });

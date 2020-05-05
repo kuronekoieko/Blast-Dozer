@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using System.Linq;
 
 /// <summary>
 /// ゲーム画面
@@ -14,6 +15,7 @@ public class GameCanvasManager : BaseCanvasManager
 {
     [SerializeField] Text pointText;
     [SerializeField] BrokenPointTextController brokenPointTextPrefab;
+    List<BrokenPointTextController> brokenPoints;
     public Canvas canvas;
     public static GameCanvasManager i;
 
@@ -27,6 +29,7 @@ public class GameCanvasManager : BaseCanvasManager
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
+        brokenPoints = new List<BrokenPointTextController>();
 
     }
 
@@ -50,7 +53,18 @@ public class GameCanvasManager : BaseCanvasManager
     {
 
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(GameManager.i.cameraController.cameraShakeController.mainCamera, worldPos);
-        var bptc = Instantiate(brokenPointTextPrefab, Vector3.zero, Quaternion.identity, transform);
-        bptc.Show(screenPos, point);
+        var brokenPoint = GetBrokenPoint();
+        brokenPoint.Show(screenPos, point);
+    }
+
+
+    BrokenPointTextController GetBrokenPoint()
+    {
+        var brokenPoint = brokenPoints.Where(b => !b.gameObject.activeSelf).FirstOrDefault();
+        if (brokenPoint != null) return brokenPoint;
+        brokenPoint = Instantiate(brokenPointTextPrefab, Vector3.zero, Quaternion.identity, transform);
+        brokenPoint.OnStart();
+        brokenPoints.Add(brokenPoint);
+        return brokenPoint;
     }
 }
