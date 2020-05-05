@@ -62,9 +62,10 @@ public class PlayerController : MonoBehaviour
         GameManager.i.cameraController.Shake();
         Variables.status.point += point;
         Debug.Log(Variables.status.point);
-        if (Variables.status.point > 10)
+        if (Variables.status.point > 5)
         {
             transform.localScale = Vector3.one * 2;
+            GameManager.i.cameraController.SizeUp();
         }
     }
 }
