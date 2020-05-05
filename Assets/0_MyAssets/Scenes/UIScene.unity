@@ -1318,7 +1318,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5097,7 +5097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextButton: {fileID: 2423863803430921132}
-  uICameraController: {fileID: 685837721709680622}
 --- !u!1 &8392170459943633079
 GameObject:
   m_ObjectHideFlags: 0
