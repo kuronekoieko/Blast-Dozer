@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     Vector3 mouseDownPos;
     Rigidbody rb;
-    float speed = 50;
+    float speed = 30;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             direction = Input.mousePosition - mouseDownPos;
+            if (direction == Vector3.zero) { return; }
             direction.z = direction.y;
             direction.y = 0;
             transform.rotation = Quaternion.LookRotation(direction);
