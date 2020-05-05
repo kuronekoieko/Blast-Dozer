@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public CameraController cameraController { get { return _cameraController; } }
     public static GameManager i;
 
+    void Awake()
+    {
+    }
 
     void Start()
     {

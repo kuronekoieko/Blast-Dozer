@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
             canvases[i].OnInitialize();
         }
         Variables.screenState = ScreenState.Game;
+        Variables.status = new Status();
     }
 
     // イベントハンドラー（イベント発生時に動かしたい処理）
