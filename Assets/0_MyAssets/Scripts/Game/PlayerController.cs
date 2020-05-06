@@ -27,12 +27,12 @@ public class PlayerController : MonoBehaviour
     {
         if (isBound)
         {
+            rb.velocity = -transform.forward * speed;
         }
         else
         {
             Controller();
         }
-
     }
 
     void Controller()
@@ -63,11 +63,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var obstacle = other.gameObject.GetComponent<ObstacleController>();
-        if (obstacle == null)
-        {
-            Debug.Log(other.gameObject.name);
-            return;
-        }
+        if (obstacle == null) { return; }
 
         if (obstacle.Broken(atk, out int point))
         {
@@ -75,9 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            isBound = true;
-            rb.velocity = -transform.forward * speed;
-            DOVirtual.DelayedCall(0.5f, () => { isBound = false; });
+            Bound();
         }
     }
 
@@ -91,5 +85,18 @@ public class PlayerController : MonoBehaviour
             transform.localScale = Vector3.one * 2;
             GameManager.i.cameraController.SizeUp();
         }
+    }
+
+    void Bound()
+    {
+        isBound = true;
+        speed = 100;
+
+        DOTween.To(() => speed, (x) => speed = x, 0, 0.5f)
+        .OnComplete(() =>
+        {
+            speed = 30;
+            isBound = false;
+        });
     }
 }
