@@ -6,15 +6,17 @@ public class ObstacleController : MonoBehaviour
 {
     Collider col;
     MeshRenderer meshRenderer;
-    float volume;
+    float hp;
+    float maxHp;
     int point;
     void Start()
     {
         col = GetComponent<Collider>();
         meshRenderer = GetComponent<MeshRenderer>();
         Vector3 size = meshRenderer.bounds.size;
-        volume = size.x * size.y * size.z;
-        point = Mathf.CeilToInt(volume / 100f);
+        maxHp = size.x * size.y * size.z;
+        point = Mathf.CeilToInt(maxHp / 100f);
+        hp = maxHp;
     }
 
 
@@ -27,8 +29,12 @@ public class ObstacleController : MonoBehaviour
     public bool Broken(float atk, out int point)
     {
         point = 0;
-        volume -= atk;
-        if (volume > 0) { return false; }
+        hp -= atk;
+        if (hp > 0)
+        {
+            GameCanvasManager.i.ShowHp(transform.position, maxHp, hp);
+            return false;
+        }
         transform.DOMoveY(10, 1).SetRelative().SetEase(Ease.OutBack);
         transform.DOLocalRotate(new Vector3(180, 0, 180), 0.5f).SetRelative().SetLoops(-1).SetEase(Ease.Linear);
         col.enabled = false;
@@ -39,7 +45,7 @@ public class ObstacleController : MonoBehaviour
         GameManager.i.explosionManager.Explosion(transform);
 
         point = this.point;
-        GameCanvasManager.i.ShowAddPoint(point, transform.position);
+        GameCanvasManager.i.ShowPoint(transform.position, point);
         return true;
     }
 }

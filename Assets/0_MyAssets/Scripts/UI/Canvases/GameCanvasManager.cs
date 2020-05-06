@@ -14,9 +14,8 @@ using System.Linq;
 public class GameCanvasManager : BaseCanvasManager
 {
     [SerializeField] Text pointText;
-    [SerializeField] BrokenPointTextController brokenPointTextPrefab;
-    List<BrokenPointTextController> brokenPoints;
-    public Canvas canvas;
+    [SerializeField] ObstacleStatusController obstacleStatusPrefab;
+    List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
 
     public override void OnStart()
@@ -29,7 +28,7 @@ public class GameCanvasManager : BaseCanvasManager
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
-        brokenPoints = new List<BrokenPointTextController>();
+        obstacleStatuses = new List<ObstacleStatusController>();
 
     }
 
@@ -49,22 +48,28 @@ public class GameCanvasManager : BaseCanvasManager
         // gameObject.SetActive(false);
     }
 
-    public void ShowAddPoint(int point, Vector3 worldPos)
+    public void ShowPoint(Vector3 worldPos, int point)
     {
-
         Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(GameManager.i.cameraController.cameraShakeController.mainCamera, worldPos);
-        var brokenPoint = GetBrokenPoint();
-        brokenPoint.Show(screenPos, point);
+        var obstacleStatus = GetObstacleStatus();
+        obstacleStatus.ShowPoint(screenPos, point);
+    }
+
+    public void ShowHp(Vector3 worldPos, float maxHp, float hp)
+    {
+        Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(GameManager.i.cameraController.cameraShakeController.mainCamera, worldPos);
+        var obstacleStatus = GetObstacleStatus();
+        obstacleStatus.ShowHp(screenPos, maxHp, hp);
     }
 
 
-    BrokenPointTextController GetBrokenPoint()
+    ObstacleStatusController GetObstacleStatus()
     {
-        var brokenPoint = brokenPoints.Where(b => !b.gameObject.activeSelf).FirstOrDefault();
-        if (brokenPoint != null) return brokenPoint;
-        brokenPoint = Instantiate(brokenPointTextPrefab, Vector3.zero, Quaternion.identity, transform);
-        brokenPoint.OnStart();
-        brokenPoints.Add(brokenPoint);
-        return brokenPoint;
+        var obstacleStatus = obstacleStatuses.Where(b => !b.gameObject.activeSelf).FirstOrDefault();
+        if (obstacleStatus != null) return obstacleStatus;
+        obstacleStatus = Instantiate(obstacleStatusPrefab, Vector3.zero, Quaternion.identity, transform);
+        obstacleStatus.OnStart();
+        obstacleStatuses.Add(obstacleStatus);
+        return obstacleStatus;
     }
 }

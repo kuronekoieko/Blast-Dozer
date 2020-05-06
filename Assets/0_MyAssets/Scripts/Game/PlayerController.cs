@@ -54,11 +54,17 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(direction);
         }
         rb.velocity = direction.normalized * speed;
+
     }
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        var obstacle = collisionInfo.gameObject.GetComponent<ObstacleController>();
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        var obstacle = other.gameObject.GetComponent<ObstacleController>();
         if (obstacle == null) { return; }
 
         if (obstacle.Broken(atk, out int point))
@@ -69,6 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             isBound = true;
         }
+
     }
 
     void BreakObstacle(int point)
@@ -76,7 +83,7 @@ public class PlayerController : MonoBehaviour
         GameManager.i.cameraController.Shake();
         Variables.status.point += point;
 
-        if (Variables.status.point > 50)
+        if (Variables.status.point > 1)
         {
             transform.localScale = Vector3.one * 2;
             GameManager.i.cameraController.SizeUp();

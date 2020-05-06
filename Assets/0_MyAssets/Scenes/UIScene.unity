@@ -755,9 +755,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointText: {fileID: 4258227390074763960}
-  brokenPointTextPrefab: {fileID: 1891838977762882718, guid: 0e49a9ead0ec342dca03d550c39125ff,
+  obstacleStatusPrefab: {fileID: 1891838977762882718, guid: 0e49a9ead0ec342dca03d550c39125ff,
     type: 3}
-  canvas: {fileID: 233245274573030858}
 --- !u!114 &233245273984027832
 MonoBehaviour:
   m_ObjectHideFlags: 0
