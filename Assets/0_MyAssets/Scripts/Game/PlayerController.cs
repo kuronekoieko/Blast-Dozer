@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isBound)
         {
-            rb.velocity = -transform.forward * speed;
-            DOVirtual.DelayedCall(0.5f, () => { isBound = false; });
         }
         else
         {
@@ -65,7 +63,11 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         var obstacle = other.gameObject.GetComponent<ObstacleController>();
-        if (obstacle == null) { return; }
+        if (obstacle == null)
+        {
+            Debug.Log(other.gameObject.name);
+            return;
+        }
 
         if (obstacle.Broken(atk, out int point))
         {
@@ -74,8 +76,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             isBound = true;
+            rb.velocity = -transform.forward * speed;
+            DOVirtual.DelayedCall(0.5f, () => { isBound = false; });
         }
-
     }
 
     void BreakObstacle(int point)

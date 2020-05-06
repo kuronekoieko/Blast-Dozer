@@ -8,6 +8,7 @@ public class ObstacleStatusController : MonoBehaviour
     [SerializeField] Text pointText;
     [SerializeField] Slider hpSlider;
     RectTransform rectTransform;
+
     public void OnStart()
     {
         rectTransform = GetComponent<RectTransform>();
