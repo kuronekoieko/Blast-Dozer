@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
         Variables.status.growthIndex++;
         levelUpPS.transform.localScale = new Vector3(5, 10, 5) * growthData.scale;
         levelUpPS.Play();
+        SoundManager.i.PlayOneShot(4);
     }
 
     void Bound()
