@@ -29,7 +29,7 @@ public class ClearCanvasManager : BaseCanvasManager
         UICameraController.i.PlayConfetti();
         pointText.text = "Lv." + (Variables.status.growthIndex + 1) + "\n★ " + Variables.status.point;
         gameObject.SetActive(true);
-        DOVirtual.DelayedCall(1f, () =>
+        DOVirtual.DelayedCall(0f, () =>
         {
             // Type == Number の場合
             naichilab.RankingLoader.Instance.SendScoreAndShowRanking(Variables.status.point);
