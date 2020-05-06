@@ -90,6 +90,7 @@ public class GameCanvasManager : BaseCanvasManager
         levelUpText.gameObject.SetActive(false);
         isStart = false;
         SetTimeCountText(timer);
+        tutrials.gameObject.SetActive(true);
     }
 
     void CountDown()
