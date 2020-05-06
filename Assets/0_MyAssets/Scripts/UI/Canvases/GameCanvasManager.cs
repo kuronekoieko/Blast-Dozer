@@ -89,6 +89,7 @@ public class GameCanvasManager : BaseCanvasManager
         timer = timeLimit;
         levelUpText.gameObject.SetActive(false);
         isStart = false;
+        SetTimeCountText(timer);
     }
 
     void CountDown()
