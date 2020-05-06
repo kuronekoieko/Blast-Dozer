@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using System.Linq;
+using System;
 
 /// <summary>
 /// ゲーム画面
@@ -14,9 +15,12 @@ using System.Linq;
 public class GameCanvasManager : BaseCanvasManager
 {
     [SerializeField] Text pointText;
+    [SerializeField] Text timerText;
     [SerializeField] ObstacleStatusController obstacleStatusPrefab;
     List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
+    float timer;
+    float timeLimit = 120;
 
     public override void OnStart()
     {
@@ -35,7 +39,7 @@ public class GameCanvasManager : BaseCanvasManager
     public override void OnUpdate()
     {
         if (!base.IsThisScreen()) { return; }
-
+        CountDown();
     }
 
     protected override void OnOpen()
@@ -46,6 +50,33 @@ public class GameCanvasManager : BaseCanvasManager
     protected override void OnClose()
     {
         // gameObject.SetActive(false);
+    }
+
+    public override void OnInitialize()
+    {
+        timer = timeLimit;
+    }
+
+    void CountDown()
+    {
+        timer -= Time.deltaTime;
+        SetTimeCountText(timer);
+        if (timer > 0) { return; }
+        Variables.screenState = ScreenState.Clear;
+    }
+
+    /// <summary>
+    /// 【C#】秒数をhh:mm:ss変換するには TimeSpan を使う
+    /// https://qiita.com/Nossa/items/70487b765ec9332e0db0
+    /// </summary>
+    /// <param name="timer"></param>
+    void SetTimeCountText(float timer)
+    {
+        // TimeSpanのインスタンスを生成。時分は0でOK
+        TimeSpan span = new TimeSpan(0, 0, (int)timer);
+        // フォーマットする
+        string mmss = span.ToString(@"mm\:ss");
+        timerText.text = mmss;
     }
 
     public void ShowPoint(Vector3 worldPos, int point)
