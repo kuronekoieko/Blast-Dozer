@@ -20,10 +20,16 @@ public class GameCanvasManager : BaseCanvasManager
     [SerializeField] Text levelText;
     [SerializeField] Text levelUpText;
     [SerializeField] ObstacleStatusController obstacleStatusPrefab;
+    [SerializeField] RectTransform tutrials;
+    [SerializeField] RectTransform fingerPoint;
     List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
     float timer;
     float timeLimit = 120;
+    float angularVelocity = 7;
+
+    float animTimer;
+    bool isStart;
 
     public override void OnStart()
     {
@@ -50,7 +56,22 @@ public class GameCanvasManager : BaseCanvasManager
     public override void OnUpdate()
     {
         if (!base.IsThisScreen()) { return; }
-        CountDown();
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            tutrials.gameObject.SetActive(false);
+            isStart = true;
+        }
+
+        if (isStart)
+        {
+            CountDown();
+        }
+        else
+        {
+            FingerAnim();
+        }
     }
 
     protected override void OnOpen()
@@ -67,6 +88,7 @@ public class GameCanvasManager : BaseCanvasManager
     {
         timer = timeLimit;
         levelUpText.gameObject.SetActive(false);
+        isStart = false;
     }
 
     void CountDown()
@@ -75,6 +97,14 @@ public class GameCanvasManager : BaseCanvasManager
         SetTimeCountText(timer);
         if (timer > 0) { return; }
         Variables.screenState = ScreenState.Clear;
+    }
+
+    void FingerAnim()
+    {
+        animTimer += Time.deltaTime;
+        float y = -330f + 70f * Mathf.Sin(animTimer * angularVelocity);
+        float x = 170 * Mathf.Sin(animTimer * angularVelocity / 2);
+        fingerPoint.anchoredPosition = new Vector3(x, y, 0);
     }
 
     /// <summary>
