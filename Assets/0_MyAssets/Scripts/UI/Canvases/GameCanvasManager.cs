@@ -25,7 +25,7 @@ public class GameCanvasManager : BaseCanvasManager
     List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
     float timer;
-    float timeLimit = 120;
+    float timeLimit = 60;
     float angularVelocity = 7;
 
     float animTimer;

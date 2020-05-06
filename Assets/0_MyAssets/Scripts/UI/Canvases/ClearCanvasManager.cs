@@ -8,6 +8,7 @@ using DG.Tweening;
 public class ClearCanvasManager : BaseCanvasManager
 {
     [SerializeField] Button nextButton;
+    [SerializeField] Text pointText;
 
     public override void OnStart()
     {
@@ -26,7 +27,8 @@ public class ClearCanvasManager : BaseCanvasManager
     protected override void OnOpen()
     {
         UICameraController.i.PlayConfetti();
-        DOVirtual.DelayedCall(1.2f, () =>
+        pointText.text = "★ " + Variables.status.point;
+        DOVirtual.DelayedCall(0f, () =>
         {
             gameObject.SetActive(true);
         });

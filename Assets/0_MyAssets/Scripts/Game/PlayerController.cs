@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     void Controller()
     {
+        if (Variables.screenState != ScreenState.Game) { return; }
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownPos = Input.mousePosition;
