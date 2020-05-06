@@ -907,6 +907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointText: {fileID: 4258227390074763960}
   timerText: {fileID: 1984643638}
+  levelText: {fileID: 384747025}
   obstacleStatusPrefab: {fileID: 1891838977762882718, guid: 0e49a9ead0ec342dca03d550c39125ff,
     type: 3}
 --- !u!114 &233245273984027832
