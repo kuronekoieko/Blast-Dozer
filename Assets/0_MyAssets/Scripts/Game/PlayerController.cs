@@ -7,6 +7,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] ParticleSystem levelUpPS;
     Vector3 mouseDownPos;
     Rigidbody rb;
     float speed = 30;
@@ -95,6 +96,8 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Vector3.one * growthData.scale;
         GameManager.i.cameraController.SizeUp(growthData.scale);
         Variables.status.growthIndex++;
+        levelUpPS.transform.localScale = new Vector3(5, 10, 5) * growthData.scale;
+        levelUpPS.Play();
     }
 
     void Bound()
