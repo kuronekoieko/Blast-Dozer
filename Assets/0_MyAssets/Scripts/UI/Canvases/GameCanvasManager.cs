@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UniRx;
 using System.Linq;
 using System;
+using DG.Tweening;
 
 /// <summary>
 /// ゲーム画面
@@ -17,6 +18,7 @@ public class GameCanvasManager : BaseCanvasManager
     [SerializeField] Text pointText;
     [SerializeField] Text timerText;
     [SerializeField] Text levelText;
+    [SerializeField] Text levelUpText;
     [SerializeField] ObstacleStatusController obstacleStatusPrefab;
     List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
@@ -33,7 +35,11 @@ public class GameCanvasManager : BaseCanvasManager
             .AddTo(this.gameObject);
 
         this.ObserveEveryValueChanged(level => Variables.status.growthIndex + 1)
-            .Subscribe(level => { levelText.text = "Player\nLv." + level; })
+            .Subscribe(level =>
+            {
+                levelUpTextAnim(level);
+                levelText.text = "Player\nLv." + level;
+            })
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
@@ -60,6 +66,7 @@ public class GameCanvasManager : BaseCanvasManager
     public override void OnInitialize()
     {
         timer = timeLimit;
+        levelUpText.gameObject.SetActive(false);
     }
 
     void CountDown()
@@ -107,5 +114,21 @@ public class GameCanvasManager : BaseCanvasManager
         obstacleStatus.OnStart();
         obstacleStatuses.Add(obstacleStatus);
         return obstacleStatus;
+    }
+
+    void levelUpTextAnim(int level)
+    {
+        if (level == 1) { return; }
+        levelUpText.gameObject.SetActive(true);
+        levelUpText.transform.localScale = Vector3.zero;
+        Color c = levelUpText.color;
+        Sequence sequence = DOTween.Sequence()
+        .Append(levelUpText.transform.DOScale(new Vector3(1, 1, 1), 1).SetEase(Ease.OutElastic))
+        .Append(DOTween.ToAlpha(() => levelUpText.color, color => levelUpText.color = color, 0f, 1f))
+        .OnComplete(() =>
+        {
+            levelUpText.gameObject.SetActive(false);
+            levelUpText.color = c;
+        });
     }
 }
