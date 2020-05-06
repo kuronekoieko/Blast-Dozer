@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
     // イベントハンドラー（イベント発生時に動かしたい処理）
     void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
+        if (nextScene.name != "GameScene") { return; }
         Variables.screenState = ScreenState.Initialize;
     }
 }
