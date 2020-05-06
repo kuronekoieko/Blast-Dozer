@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     void BreakObstacle(int point)
     {
+        SoundManager.i.PlayOneShot(3);
         GameManager.i.cameraController.Shake();
         Variables.status.point += point;
 
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
     void Bound()
     {
+        SoundManager.i.PlayOneShot(2);
         isBound = true;
         speed = 100;
 
