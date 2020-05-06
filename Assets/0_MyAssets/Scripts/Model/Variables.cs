@@ -24,5 +24,6 @@ public class Variables : MonoBehaviour
 public class Status
 {
     public int point;
+    public int growthIndex;
     public int rank;
 }

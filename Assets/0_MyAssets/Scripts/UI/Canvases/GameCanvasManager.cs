@@ -16,6 +16,7 @@ public class GameCanvasManager : BaseCanvasManager
 {
     [SerializeField] Text pointText;
     [SerializeField] Text timerText;
+    [SerializeField] Text levelText;
     [SerializeField] ObstacleStatusController obstacleStatusPrefab;
     List<ObstacleStatusController> obstacleStatuses;
     public static GameCanvasManager i;
@@ -29,6 +30,10 @@ public class GameCanvasManager : BaseCanvasManager
 
         this.ObserveEveryValueChanged(point => Variables.status.point)
             .Subscribe(point => { pointText.text = "★ " + point; })
+            .AddTo(this.gameObject);
+
+        this.ObserveEveryValueChanged(level => Variables.status.growthIndex + 1)
+            .Subscribe(level => { levelText.text = "Player\nLv." + level; })
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);

@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     Vector3 mouseDownPos;
     Rigidbody rb;
     float speed = 30;
-    int level;
     float atk
     {
         get
@@ -91,11 +90,11 @@ public class PlayerController : MonoBehaviour
 
         int index = Array.IndexOf(GrowthDataSO.i.growthDatas.ToArray(), growthData);
 
-        if (index == level) { return; }
+        if (index == Variables.status.growthIndex) { return; }
 
         transform.localScale = Vector3.one * growthData.scale;
         GameManager.i.cameraController.SizeUp(growthData.scale);
-        level++;
+        Variables.status.growthIndex++;
     }
 
     void Bound()
