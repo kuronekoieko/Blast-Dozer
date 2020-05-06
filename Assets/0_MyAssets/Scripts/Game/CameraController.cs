@@ -32,11 +32,11 @@ public class CameraController : MonoBehaviour
         cameraShakeController.Shake();
     }
 
-    public void SizeUp()
+    public void SizeUp(float scale)
     {
         //if (size > maxSize) { return; }
-        float aperture = 40;
-        float f = focalLength(Camera.main.fieldOfView, aperture);
+        float aperture = 25;
+        float f = focalLength(Camera.main.fieldOfView, aperture * scale);
         DOTween.To(() => nFocalLength, (x) => nFocalLength = x, f, 0.5f);
     }
 

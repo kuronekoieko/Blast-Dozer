@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+using System;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] MeshRenderer meshRenderer;
     Vector3 mouseDownPos;
     Rigidbody rb;
     float speed = 30;
+    int level;
     float atk
     {
         get
@@ -80,11 +83,19 @@ public class PlayerController : MonoBehaviour
         GameManager.i.cameraController.Shake();
         Variables.status.point += point;
 
-        if (Variables.status.point > 1)
-        {
-            transform.localScale = Vector3.one * 2;
-            GameManager.i.cameraController.SizeUp();
-        }
+        var growthData = GrowthDataSO.i.growthDatas
+        .Where(g => Variables.status.point > g.minPoint)
+        .LastOrDefault();
+
+        if (growthData == null) { return; }
+
+        int index = Array.IndexOf(GrowthDataSO.i.growthDatas.ToArray(), growthData);
+
+        if (index == level) { return; }
+
+        transform.localScale = Vector3.one * growthData.scale;
+        GameManager.i.cameraController.SizeUp(growthData.scale);
+        level++;
     }
 
     void Bound()

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "MyGame/Create GrowthDataSO", fileName = "GrowthDataSO")]
-public class GrowthDataSO : ScriptableObject
+[CreateAssetMenu(menuName = "MyGame/Create SoundResourceSO", fileName = "SoundResourceSO")]
+public class SoundResourceSO : ScriptableObject
 {
-    public GrowthData[] growthDatas;
+    public SoundResource[] resources;
 
-    private static GrowthDataSO _i;
-    public static GrowthDataSO i
+    private static SoundResourceSO _i;
+    public static SoundResourceSO i
     {
         get
         {
-            string PATH = "ScriptableObjects/" + nameof(GrowthDataSO);
+            string PATH = "ScriptableObjects/" + nameof(SoundResourceSO);
             //初アクセス時にロードする
             if (_i == null)
             {
-                _i = Resources.Load<GrowthDataSO>(PATH);
+                _i = Resources.Load<SoundResourceSO>(PATH);
 
                 //ロード出来なかった場合はエラーログを表示
                 if (_i == null)
@@ -31,8 +31,8 @@ public class GrowthDataSO : ScriptableObject
 }
 
 [System.Serializable]
-public class GrowthData
+public class SoundResource
 {
-    public int minPoint;
-    public float scale;
+    public AudioClip audioClip;
+    public string name;
 }
