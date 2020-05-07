@@ -40,7 +40,11 @@ public class PlayerController : MonoBehaviour
 
     void Controller()
     {
-        if (Variables.screenState != ScreenState.Game) { return; }
+        if (Variables.screenState != ScreenState.Game)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownPos = Input.mousePosition;
