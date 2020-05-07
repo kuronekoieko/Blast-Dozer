@@ -147,14 +147,16 @@ public class GameCanvasManager : BaseCanvasManager
         obstacleStatuses.Add(obstacleStatus);
         return obstacleStatus;
     }
-
+    Sequence sequence;
     void levelUpTextAnim(int level)
     {
         if (level == 1) { return; }
+        sequence.Kill(true);
         levelUpText.gameObject.SetActive(true);
         levelUpText.transform.localScale = Vector3.zero;
         Color c = levelUpText.color;
-        Sequence sequence = DOTween.Sequence()
+
+        sequence = DOTween.Sequence()
         .Append(levelUpText.transform.DOScale(new Vector3(1, 1, 1), 1).SetEase(Ease.OutElastic))
         .Append(DOTween.ToAlpha(() => levelUpText.color, color => levelUpText.color = color, 0f, 1f))
         .OnComplete(() =>
