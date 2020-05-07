@@ -27,9 +27,9 @@ public class CameraController : MonoBehaviour
         transform.position = playerController.transform.position + vecFromPlayer.normalized * nFocalLength;
     }
 
-    public void Shake()
+    public void Shake(float scale)
     {
-        cameraShakeController.Shake();
+        cameraShakeController.Shake(scale);
     }
 
     public void SizeUp(float scale)

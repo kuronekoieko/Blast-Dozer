@@ -30,6 +30,7 @@ public class GameCanvasManager : BaseCanvasManager
 
     float animTimer;
     bool isStart;
+    Sequence sequence;
 
     public override void OnStart()
     {
@@ -147,7 +148,7 @@ public class GameCanvasManager : BaseCanvasManager
         obstacleStatuses.Add(obstacleStatus);
         return obstacleStatus;
     }
-    Sequence sequence;
+
     void levelUpTextAnim(int level)
     {
         if (level == 1) { return; }

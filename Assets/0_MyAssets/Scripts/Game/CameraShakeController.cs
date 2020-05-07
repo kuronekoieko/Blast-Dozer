@@ -17,10 +17,10 @@ public class CameraShakeController : MonoBehaviour
 
     }
 
-    public void Shake()
+    public void Shake(float scale)
     {
         Sequence sequence = DOTween.Sequence()
-            .Append(transform.DOShakePosition(duration: 1, strength: 0.8f))
+            .Append(transform.DOShakePosition(duration: 1, strength: 0.8f * scale))
             .Append(transform.DOLocalMove(Vector3.zero, 0.5f));
     }
 }

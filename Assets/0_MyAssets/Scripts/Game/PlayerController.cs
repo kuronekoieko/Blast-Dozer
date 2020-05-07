@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     void BreakObstacle(int point)
     {
         SoundManager.i.PlayOneShot(3);
-        GameManager.i.cameraController.Shake();
+
         Variables.status.point += point;
 
         var growthData = GrowthDataSO.i.growthDatas
@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour
         .LastOrDefault();
 
         if (growthData == null) { return; }
+
+        GameManager.i.cameraController.Shake(growthData.scale);
 
         int index = Array.IndexOf(GrowthDataSO.i.growthDatas.ToArray(), growthData);
 
