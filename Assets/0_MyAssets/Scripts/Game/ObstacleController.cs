@@ -35,7 +35,7 @@ public class ObstacleController : MonoBehaviour
             GameCanvasManager.i.ShowHp(transform.position, maxHp, hp);
             return false;
         }
-        transform.DOMoveY(10, 1).SetRelative().SetEase(Ease.OutBack);
+        transform.DOMoveY(20, 1).SetRelative().SetEase(Ease.OutBack);
         transform.DOLocalRotate(new Vector3(180, 0, 180), 0.5f).SetRelative().SetLoops(-1).SetEase(Ease.Linear);
         col.enabled = false;
         DOVirtual.DelayedCall(1, () =>
