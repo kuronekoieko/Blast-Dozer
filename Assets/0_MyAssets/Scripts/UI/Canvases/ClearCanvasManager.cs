@@ -28,6 +28,7 @@ public class ClearCanvasManager : BaseCanvasManager
     {
         UICameraController.i.PlayConfetti();
         pointText.text = "Lv." + (Variables.status.growthIndex + 1) + "\n★ " + Variables.status.point;
+        FirebaseAnalyticsManager.i.LogEvent("score_", "score_", "score_", Variables.status.point);
         DOVirtual.DelayedCall(0f, () =>
         {
             gameObject.SetActive(true);

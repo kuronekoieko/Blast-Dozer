@@ -21,5 +21,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (i == null) i = this;
+        FirebaseAnalyticsManager.i.LogScreen("Game");
     }
 }
