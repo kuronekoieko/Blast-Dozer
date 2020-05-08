@@ -14,8 +14,12 @@ public class FirebaseAnalyticsManager : MonoBehaviour
 
     void Awake()
     {
-        if (i == null) i = this;
-        Initialize();
+        if (i == null)
+        {
+            Initialize();
+            i = this;
+        }
+
     }
 
     void Initialize()
@@ -23,33 +27,33 @@ public class FirebaseAnalyticsManager : MonoBehaviour
 #if UNITY_IOS
         isAvailable = true;
 #elif UNITY_ANDROID
-                isAvailable = false;
-                Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-                {
-                    var dependencyStatus = task.Result;
-                    if (dependencyStatus == Firebase.DependencyStatus.Available)
-                    {
-                        // Create and hold a reference to your FirebaseApp,
-                        // where app is a Firebase.FirebaseApp property of your application class.
-                        //   app = Firebase.FirebaseApp.DefaultInstance;
-                        isAvailable = true;
-                        // Set a flag here to indicate whether Firebase is ready to use by your app.
-                    }
-                    else
-                    {
-                        UnityEngine.Debug.LogError(System.String.Format(
-                          "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-                        // Firebase Unity SDK is not safe to use here.
-                    }
-                });
+                      isAvailable = false;
+                      Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+                      {
+                          var dependencyStatus = task.Result;
+                          if (dependencyStatus == Firebase.DependencyStatus.Available)
+                          {
+                              // Create and hold a reference to your FirebaseApp,
+                              // where app is a Firebase.FirebaseApp property of your application class.
+                              //   app = Firebase.FirebaseApp.DefaultInstance;
+                              isAvailable = true;
+                              // Set a flag here to indicate whether Firebase is ready to use by your app.
+                          }
+                          else
+                          {
+                              UnityEngine.Debug.LogError(System.String.Format(
+                                "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                              // Firebase Unity SDK is not safe to use here.
+                          }
+                      });
 #endif
     }
 
     public void LogEvent(
-        string eventCategory,
-        string eventAction,
-        string eventLabel,
-        long value)
+            string eventCategory,
+            string eventAction,
+            string eventLabel,
+            long value)
     {
         if (!isAvailable) { return; }
         Firebase.Analytics.FirebaseAnalytics.LogEvent(
@@ -63,5 +67,4 @@ public class FirebaseAnalyticsManager : MonoBehaviour
         if (!isAvailable) { return; }
         Firebase.Analytics.FirebaseAnalytics.SetCurrentScreen(screenName: title, screenClass: title);
     }
-
 }

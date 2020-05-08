@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "514749915525",
+    "firebase_url": "https://unity-7bca6.firebaseio.com",
+    "project_id": "unity-7bca6",
+    "storage_bucket": "unity-7bca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514749915525:android:8c9d4b84e6857df12b64ec",
+        "android_client_info": {
+          "package_name": "com.bulldozer.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvaQUqKLnqU6YCL_OdT0V0wUbxmL3Qmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514749915525-cpgt5nnk3dkl6hrkj5b13056sacqco31.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bulldozer.games"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514749915525:android:a97c361c3f2061a82b64ec",
+        "android_client_info": {
+          "package_name": "com.colorfulMerge.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvaQUqKLnqU6YCL_OdT0V0wUbxmL3Qmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514749915525-cpgt5nnk3dkl6hrkj5b13056sacqco31.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bulldozer.games"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514749915525:android:045cd3dc832225142b64ec",
+        "android_client_info": {
+          "package_name": "com.rescueballs.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvaQUqKLnqU6YCL_OdT0V0wUbxmL3Qmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514749915525-cpgt5nnk3dkl6hrkj5b13056sacqco31.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bulldozer.games"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514749915525:android:1ae738e84495a2342b64ec",
+        "android_client_info": {
+          "package_name": "com.wild.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvaQUqKLnqU6YCL_OdT0V0wUbxmL3Qmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514749915525-1jge1ijo6t9olstd1mosq1s5bkp1kg1p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "514749915525-cpgt5nnk3dkl6hrkj5b13056sacqco31.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bulldozer.games"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
