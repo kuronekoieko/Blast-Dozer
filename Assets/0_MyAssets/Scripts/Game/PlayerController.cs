@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         SoundManager.i.PlayOneShot(3);
 
-        Variables.status.point += point;
+        Variables.status.point += point * 2;
 
         var growthData = GrowthDataSO.i.growthDatas
         .Where(g => Variables.status.point > g.minPoint)
