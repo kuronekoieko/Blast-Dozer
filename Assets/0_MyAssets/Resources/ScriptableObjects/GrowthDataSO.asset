@@ -20,24 +20,24 @@ MonoBehaviour:
   - minPoint: 20
     scale: 1.4
   - minPoint: 40
-    scale: 1.6
-  - minPoint: 80
-    scale: 1.8
-  - minPoint: 160
     scale: 2
-  - minPoint: 320
+  - minPoint: 80
     scale: 3
-  - minPoint: 640
+  - minPoint: 160
     scale: 4
-  - minPoint: 1280
+  - minPoint: 320
     scale: 5
-  - minPoint: 2000
+  - minPoint: 640
     scale: 6
-  - minPoint: 2100
+  - minPoint: 1000
     scale: 7
-  - minPoint: 2200
+  - minPoint: 1500
     scale: 8
-  - minPoint: 2300
+  - minPoint: 2000
     scale: 9
-  - minPoint: 2400
+  - minPoint: 2500
+    scale: 8
+  - minPoint: 3000
+    scale: 9
+  - minPoint: 3500
     scale: 10

@@ -51,6 +51,12 @@ public class GameCanvasManager : BaseCanvasManager
 
         gameObject.SetActive(true);
         obstacleStatuses = new List<ObstacleStatusController>();
+        for (int i = 0; i < 1000; i++)
+        {
+            var obstacleStatus = Instantiate(obstacleStatusPrefab, Vector3.zero, Quaternion.identity, transform);
+            obstacleStatus.OnStart();
+            obstacleStatuses.Add(obstacleStatus);
+        }
 
     }
 
@@ -143,9 +149,7 @@ public class GameCanvasManager : BaseCanvasManager
     {
         var obstacleStatus = obstacleStatuses.Where(b => !b.gameObject.activeSelf).FirstOrDefault();
         if (obstacleStatus != null) return obstacleStatus;
-        obstacleStatus = Instantiate(obstacleStatusPrefab, Vector3.zero, Quaternion.identity, transform);
-        obstacleStatus.OnStart();
-        obstacleStatuses.Add(obstacleStatus);
+
         return obstacleStatus;
     }
 

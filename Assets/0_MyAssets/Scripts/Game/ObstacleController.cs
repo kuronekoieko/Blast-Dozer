@@ -45,7 +45,7 @@ public class ObstacleController : MonoBehaviour
         GameManager.i.explosionManager.Explosion(transform);
 
         point = this.point;
-        GameCanvasManager.i.ShowPoint(transform.position, point);
+        //GameCanvasManager.i.ShowPoint(transform.position, point);
         return true;
     }
 }
