@@ -32,6 +32,11 @@ public class GameCanvasManager : BaseCanvasManager
     bool isStart;
     Sequence sequence;
 
+    void Awake()
+    {
+        obstacleStatuses = new List<ObstacleStatusController>();
+    }
+
     public override void OnStart()
     {
         if (i == null) i = this;
@@ -50,8 +55,6 @@ public class GameCanvasManager : BaseCanvasManager
             .AddTo(this.gameObject);
 
         gameObject.SetActive(true);
-        obstacleStatuses = new List<ObstacleStatusController>();
-
     }
 
     public override void OnUpdate()
@@ -92,6 +95,18 @@ public class GameCanvasManager : BaseCanvasManager
         isStart = false;
         SetTimeCountText(timer);
         tutrials.gameObject.SetActive(true);
+        ObstacleStatusesGenerator();
+    }
+
+    void ObstacleStatusesGenerator()
+    {
+        int obsCount = FindObjectsOfType<ObstacleController>().Length;
+        for (int i = obstacleStatuses.Count; i < obsCount; i++)
+        {
+            var obstacleStatus = Instantiate(obstacleStatusPrefab, Vector3.zero, Quaternion.identity, transform);
+            obstacleStatus.OnStart();
+            obstacleStatuses.Add(obstacleStatus);
+        }
     }
 
     void CountDown()
@@ -142,10 +157,6 @@ public class GameCanvasManager : BaseCanvasManager
     ObstacleStatusController GetObstacleStatus()
     {
         var obstacleStatus = obstacleStatuses.Where(b => !b.gameObject.activeSelf).FirstOrDefault();
-        if (obstacleStatus != null) return obstacleStatus;
-        obstacleStatus = Instantiate(obstacleStatusPrefab, Vector3.zero, Quaternion.identity, transform);
-        obstacleStatus.OnStart();
-        obstacleStatuses.Add(obstacleStatus);
         return obstacleStatus;
     }
 

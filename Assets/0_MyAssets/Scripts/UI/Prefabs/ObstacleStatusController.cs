@@ -14,6 +14,7 @@ public class ObstacleStatusController : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         pointText.gameObject.SetActive(false);
         hpSlider.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void ShowPoint(Vector3 screenPos, int point)
