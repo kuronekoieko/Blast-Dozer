@@ -59,4 +59,12 @@ public class CameraController : MonoBehaviour
 
         return nFocalLength;
     }
+
+    void MoveToFront()
+    {
+        Vector3 pos = Vector3.zero;
+        Vector3 angle = Vector3.zero;
+        transform.DOLocalMove(pos, 1);
+        transform.DORotate(angle, 1);
+    }
 }
