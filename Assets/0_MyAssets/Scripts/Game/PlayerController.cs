@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (index == Variables.status.growthIndex) { return; }
 
         transform.localScale = Vector3.one * growthData.scale;
-        speed = 30 * (1 + growthData.scale / 5);
+        speed = 30 * (1 + growthData.scale / 10);
         GameManager.i.cameraController.SizeUp(growthData.scale);
         Variables.status.growthIndex++;
         levelUpPS.transform.localScale = new Vector3(5, 10, 5) * growthData.scale;
