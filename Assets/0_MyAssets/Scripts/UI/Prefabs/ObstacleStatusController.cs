@@ -49,7 +49,4 @@ public class ObstacleStatusController : MonoBehaviour
             gameObject.SetActive(false);
         });
     }
-
-
-
 }
