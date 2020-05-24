@@ -29,4 +29,10 @@ public class UICameraController : MonoBehaviour
         confettiR.Play();
         SoundManager.i.PlayOneShot(1);
     }
+
+    public void StopConfetti()
+    {
+        confettiL.Stop();
+        confettiR.Stop();
+    }
 }
