@@ -33,6 +33,7 @@ public class ClearCanvasManager : BaseCanvasManager
         {
             gameObject.SetActive(true);
         });
+        GameManager.i.cameraController.MoveToFront();
     }
 
     protected override void OnClose()

@@ -1623,6 +1623,16 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
       propertyPath: playOnAwake
@@ -1749,6 +1759,16 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198617934630346986, guid: 211df3921ba166e4d97f049834dc5490,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 198701170200341874, guid: 211df3921ba166e4d97f049834dc5490,
         type: 3}
@@ -2230,7 +2250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!223 &2423863803426664250
 Canvas:
   m_ObjectHideFlags: 0

@@ -24,7 +24,11 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        transform.position = playerController.transform.position + vecFromPlayer.normalized * nFocalLength;
+        if (Variables.screenState == ScreenState.Game)
+        {
+            transform.position = playerController.transform.position + vecFromPlayer.normalized * nFocalLength;
+        }
+
     }
 
     public void Shake(float scale)
@@ -60,11 +64,12 @@ public class CameraController : MonoBehaviour
         return nFocalLength;
     }
 
-    void MoveToFront()
+    public void MoveToFront()
     {
-        Vector3 pos = Vector3.zero;
-        Vector3 angle = Vector3.zero;
+        transform.SetParent(playerController.transform);
+        Vector3 pos = new Vector3(13, 4.7f, 17);
+        Vector3 angle = new Vector3(5.2f, -138, 1f);
         transform.DOLocalMove(pos, 1);
-        transform.DORotate(angle, 1);
+        transform.DOLocalRotate(angle, 1);
     }
 }
